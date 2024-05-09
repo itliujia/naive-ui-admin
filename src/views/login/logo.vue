@@ -1,0 +1,41 @@
+<script setup lang="ts">
+import siteConfig from "@/settings/site";
+import { useThemeVars } from "naive-ui";
+const themeVars = useThemeVars();
+</script>
+
+<template>
+  <a class="logo-links" href="/">
+    <img class="logo-img" src="@/assets/logo.png" />
+    <div class="logon-title" :style="{ color: themeVars.primaryColor }">
+      {{ siteConfig.LOGO_NAME }}
+    </div>
+  </a>
+  <div class="logo-describe">{{ siteConfig.SITE_TITLE }}</div>
+</template>
+
+<style lang="scss" scoped>
+.logo-links {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  .logo-img {
+    width: 35px;
+    height: 35px;
+    margin-right: 5px;
+  }
+  .logon-title {
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 600;
+  }
+}
+
+.logo-describe {
+  margin-top: 1em;
+  margin-left: 0.25em;
+  font-size: 1.25em;
+  font-weight: bold;
+  font-family: var(--BadDog-Hanzi-Font);
+}
+</style>

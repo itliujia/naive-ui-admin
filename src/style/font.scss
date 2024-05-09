@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap");
+
+:root {
+  --BadDog-Hanzi-Font: "Noto Sans SC";
+
+  --BadDog-font-regular-400: 400 14px/22px var(--BadDog-Hanzi-Font);
+  --BadDog-font-regular-500: 500 14px/22px var(--BadDog-Hanzi-Font);
+  --BadDog-font-regular-700: 700 14px/22px var(--BadDog-Hanzi-Font);
+
+  --BadDog-font-small-400: 400 12px/20px var(--BadDog-Hanzi-Font);
+  --BadDog-font-small-500: 500 12px/20px var(--BadDog-Hanzi-Font);
+  --BadDog-font-small-700: 700 12px/20px var(--BadDog-Hanzi-Font);
+}
