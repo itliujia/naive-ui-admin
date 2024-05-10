@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import siteConfig from "@/settings/site";
+import useLocalSvg from "@/utils/svg";
+import siteConfig from "@build/settings/site";
 import { useThemeVars } from "naive-ui";
 const themeVars = useThemeVars();
+const { logoSvg } = useLocalSvg();
 </script>
 
 <template>
   <a class="logo-links" href="/">
-    <img class="logo-img" src="@/assets/logo.png" />
+    <BdIcon :icon="logoSvg" class="logo-svg" />
     <div class="logon-title" :style="{ color: themeVars.primaryColor }">
       {{ siteConfig.LOGO_NAME }}
     </div>
@@ -19,7 +21,7 @@ const themeVars = useThemeVars();
   display: flex;
   align-content: center;
   align-items: center;
-  .logo-img {
+  .logo-svg {
     width: 35px;
     height: 35px;
     margin-right: 5px;

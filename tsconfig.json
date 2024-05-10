@@ -12,7 +12,7 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
+    "forceConsistentCasingInFileNames": false,
     "sourceMap": true,
     "baseUrl": ".",
     "allowJs": false,
@@ -20,7 +20,8 @@
     "lib": ["ESNext", "DOM"],
     "paths": {
       "@/*": ["src/*"],
-      "@root/*": ["./*"]
+      "@root/*": ["./*"],
+      "@build/*": ["./build/*"]
     },
     "types": ["node", "vite/client", "naive-ui/volar"]
   },
@@ -34,5 +35,8 @@
     "build/**/*.d.ts",
     "vite.config.ts"
   ],
-  "exclude": ["dist", "**/*.js", "node_modules"]
+  "exclude": ["dist", "**/*.js", "node_modules"],
+  "ts-node": {
+    "esm": true
+  }
 }

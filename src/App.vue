@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NConfigProvider } from "naive-ui";
-import { prefixCls, themeOverrides } from "@/settings/design";
+import { prefixCls, themeOverrides } from "@build/settings/design";
 </script>
 
 <template>

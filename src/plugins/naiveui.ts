@@ -1,7 +1,39 @@
 import type { App, Component } from "vue";
-import { NAvatar, NInput, NForm, NFormItem, NIcon, NButton } from "naive-ui";
+import {
+  NAvatar,
+  NInput,
+  NForm,
+  NFormItem,
+  NIcon,
+  NButton,
+  NLayout,
+  NLayoutContent,
+  NLayoutFooter,
+  NLayoutHeader,
+  NLayoutSider,
+  NMenu,
+  NDivider,
+  NDropdown,
+  NTooltip
+} from "naive-ui";
 
-const components = [NAvatar, NInput, NForm, NFormItem, NIcon, NButton];
+const components = [
+  NAvatar,
+  NInput,
+  NForm,
+  NFormItem,
+  NIcon,
+  NButton,
+  NLayout,
+  NLayoutContent,
+  NLayoutFooter,
+  NLayoutHeader,
+  NLayoutSider,
+  NMenu,
+  NDivider,
+  NDropdown,
+  NTooltip
+];
 
 const plugins = [];
 

@@ -9,5 +9,8 @@ export const themeOverrides: GlobalThemeOverrides = {
     primaryColorHover: "#ffcfa1",
     primaryColorPressed: "#ff9f43",
     primaryColorSuppl: "#ff9f43"
+  },
+  Button: {
+    textColor: "rgb(118, 124, 130)"
   }
 };

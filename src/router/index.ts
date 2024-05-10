@@ -3,6 +3,8 @@ import type { Router } from "vue-router";
 
 import { getHistoryMode } from "./utils";
 
+const Layout = () => import("@/layouts/index.vue");
+
 /** 创建路由实例 */
 const router: Router = createRouter({
   history: getHistoryMode(),
@@ -10,10 +12,18 @@ const router: Router = createRouter({
     {
       path: "/",
       name: "Welcome",
-      component: () => import("@/views/login/index.vue"),
-      meta: {
-        title: "首页"
-      }
+      component: Layout,
+      redirect: "/home",
+      children: [
+        {
+          path: "/home",
+          name: "Home",
+          component: () => import("@/views/home/index.vue"),
+          meta: {
+            title: "首页"
+          }
+        }
+      ]
     }
   ],
   strict: true,
