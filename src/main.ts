@@ -1,14 +1,12 @@
 import { createApp } from "vue";
-import { createPinia } from "pinia";
 import App from "./App.vue";
 
 import { useNaiveui } from "@/plugins/naiveui";
-
 import { router } from "@/router";
-
 import { MotionPlugin } from "@vueuse/motion";
-
 import importComponent from "@/components/comps";
+
+import { setupStore } from "@/stores";
 
 // 引入重置样式
 import "./style/reset.scss";
@@ -22,8 +20,10 @@ const app = createApp(App);
 
 // 注册全局组件
 importComponent(app);
-app.use(createPinia());
-app.use(MotionPlugin);
+
 app.use(router);
+await router.isReady();
+setupStore(app);
+app.use(MotionPlugin);
 app.use(useNaiveui);
 app.mount("#app");

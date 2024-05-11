@@ -23,7 +23,7 @@ export default [
       {
         path: "/redirect/:path(.*)",
         name: "Redirect",
-        component: () => import("@/layout/redirect.vue")
+        component: () => import("@/layouts/redirect.vue")
       }
     ]
   }

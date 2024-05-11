@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import svg from "@/assets/image/error/500.svg";
+import svg from "@/assets/image/error/403.svg";
 import GoHome from "./GoHome.vue";
 </script>
 
@@ -10,7 +10,7 @@ import GoHome from "./GoHome.vue";
     </div>
     <div class="text-center">
       <h1 class="text-base text-gray-500">抱歉，你无权访问该页面</h1>
-      <GoHome />
+      <!-- <GoHome /> -->
     </div>
   </div>
 </template>

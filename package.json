@@ -11,15 +11,20 @@
   "dependencies": {
     "@pureadmin/utils": "^2.4.7",
     "@vueuse/motion": "^2.1.0",
+    "axios": "^1.6.8",
     "dayjs": "^1.11.11",
+    "js-cookie": "^3.0.5",
     "naive-ui": "^2.38.2",
     "pinia": "^2.1.7",
+    "qs": "^6.12.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20.12.5",
+    "@types/qs": "^6.9.15",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/tsconfig": "^0.5.1",

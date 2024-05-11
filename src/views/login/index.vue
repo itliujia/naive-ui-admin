@@ -5,6 +5,11 @@ import { NForm, FormRules } from "naive-ui";
 import { timestampToTime } from "@/utils/time";
 import { useCompRef } from "@/hooks/typings";
 import { debounce } from "@pureadmin/utils";
+import { useUserStoreHook } from "@/stores/modules/user";
+import { useRouter } from "vue-router";
+import { showMessage } from "@/utils/discreteApi";
+import { initRouter } from "@/router/utils";
+import siteConfig from "@build/settings/site";
 
 /** 当前年份 */
 const currentYear = timestampToTime(-1, "yyyy");
@@ -34,6 +39,8 @@ const formRules: FormRules = {
 const loginFormRef = useCompRef(NForm);
 const isLoading = ref(false);
 
+const router = useRouter();
+
 /** 登录按钮标签 */
 const loginBtnLabel = computed(() => (isLoading.value ? "登录中，请稍候……" : "登 录"));
 
@@ -41,6 +48,20 @@ const loginBtnLabel = computed(() => (isLoading.value ? "登录中，请稍候�
 const onUserLogin = async () => {
   loginFormRef.value?.validate(async (errors) => {
     if (!errors) {
+      isLoading.value = true;
+      useUserStoreHook()
+        .login(loginForm)
+        .then((res) => {
+          if (res.code == siteConfig.SUCCESS_CODE) {
+            initRouter().then(() => {
+              router.push("/");
+              showMessage(`${res.data.nickName}，恭喜你登录成功！`, {
+                type: "success"
+              });
+            });
+          }
+        })
+        .catch(() => setTimeout(() => (isLoading.value = false), 500));
     }
   });
 };

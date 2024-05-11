@@ -1,21 +1,21 @@
 export default {
   path: "/error",
-  redirect: "/error/403",
+  redirect: "/403",
   meta: {
     title: "异常页面",
     showLink: false
   },
   children: [
     {
-      path: "/error/403",
+      path: "/403",
       name: "403",
       component: () => import("@/views/error/403.vue"),
       meta: {
-        title: "403"
+        title: "无权限"
       }
     },
     {
-      path: "/error/404",
+      path: "/404",
       name: "404",
       component: () => import("@/views/error/404.vue"),
       meta: {
@@ -23,7 +23,7 @@ export default {
       }
     },
     {
-      path: "/error/500",
+      path: "/500",
       name: "500",
       component: () => import("@/views/error/500.vue"),
       meta: {

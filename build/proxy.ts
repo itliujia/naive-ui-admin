@@ -5,9 +5,9 @@
  * @see https://cn.vitejs.dev/config/server-options.html#server-proxy
  */
 export default {
-  // '/api': {
-  //     target: 'http://jsonplaceholder.typicode.com',
-  //     changeOrigin: true,
-  //     rewrite: (path) => path.replace(/^\/api/, '')
-  //   },
+  "/api": {
+    target: "http://127.0.0.1:8201",
+    changeOrigin: true,
+    rewrite: (path: string) => path.replace(/^\/api/, "")
+  }
 };
