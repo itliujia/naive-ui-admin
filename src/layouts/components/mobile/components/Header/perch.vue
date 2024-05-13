@@ -9,7 +9,7 @@
   height: 68px;
   line-height: 68px;
   background: transparent;
-  margin: 0 12px;
+  // margin: 0 12px;
   box-shadow: none !important;
   z-index: 99;
 }

@@ -14,7 +14,10 @@ import {
   NMenu,
   NDivider,
   NDropdown,
-  NTooltip
+  NTooltip,
+  NCard,
+  NWatermark,
+  NDataTable
 } from "naive-ui";
 
 const components = [
@@ -32,7 +35,10 @@ const components = [
   NMenu,
   NDivider,
   NDropdown,
-  NTooltip
+  NTooltip,
+  NCard,
+  NDataTable,
+  NWatermark
 ];
 
 const plugins = [];

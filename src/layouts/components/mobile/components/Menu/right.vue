@@ -63,7 +63,7 @@ const onSelect = (key: string) => {
 
       <div class="right-item-trigger">
         <div class="shadow-lg avatar">
-          <NDropdown :options="options" size="large" @select="onSelect">
+          <NDropdown :options="options" size="huge" @select="onSelect">
             <NAvatar round :style="{ backgroundColor: themeVars.primaryColor }" size="large">
               {{ useUserStoreHook().nickName }}
             </NAvatar>

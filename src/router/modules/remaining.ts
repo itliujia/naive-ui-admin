@@ -27,4 +27,15 @@ export default [
       }
     ]
   }
+  // {
+  //   path: "/",
+  //   component: Layout,
+  //   redirect: "/home",
+  //   meta: {
+  //     title: "首页",
+  //     showLink: false,
+  //     rank: 0
+  //   },
+  //   children: []
+  // }
 ] as Array<RouteConfigsTable>;

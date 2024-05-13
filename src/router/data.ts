@@ -1,5 +1,6 @@
 import { RouteRecordRaw } from "vue-router";
 import RemainingRouter from "./modules/remaining";
+import { setRouterRank } from "./utils";
 
 /** 布局 */
 export const LAYOUT = () => import("@/layouts/index.vue");
@@ -32,3 +33,16 @@ export const WHITE_LIST = ["/login"];
 export const ModulesRoutes = import.meta.glob("/src/views/**/*.{vue,tsx}");
 
 export const IFrame = () => import("@/layouts/frameView.vue");
+
+/** 获取根路由 */
+export const getRootRoute = (redirect: string, children: RouteRecordRaw[]) => {
+  return {
+    path: "/",
+    component: LAYOUT,
+    redirect: redirect,
+    meta: {
+      title: "首页"
+    },
+    children
+  };
+};

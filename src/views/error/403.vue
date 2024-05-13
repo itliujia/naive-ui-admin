@@ -10,7 +10,7 @@ import GoHome from "./GoHome.vue";
     </div>
     <div class="text-center">
       <h1 class="text-base text-gray-500">抱歉，你无权访问该页面</h1>
-      <!-- <GoHome /> -->
+      <GoHome />
     </div>
   </div>
 </template>

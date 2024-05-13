@@ -1,7 +1,7 @@
 import { createRouter } from "vue-router";
 import type { Router } from "vue-router";
 
-import { getHistoryMode, initRouter } from "./utils";
+import { getHistoryMode, initRouter, setRouterRank } from "./utils";
 import { constantRoutes, WHITE_LIST } from "./data";
 import { AUTH_KEY } from "@/utils/auth";
 import { isAllEmpty, isUrl, openLink, storageLocal } from "@pureadmin/utils";
@@ -11,26 +11,8 @@ import { AuthDataType } from "@/typings/auth";
 
 /** 创建路由实例 */
 export const router: Router = createRouter({
-  history: getHistoryMode(),
-  routes: constantRoutes,
-  // [
-  //   {
-  //     path: "/",
-  //     name: "Welcome",
-  //     component: Layout,
-  //     redirect: "/home",
-  //     children: [
-  //       {
-  //         path: "/home",
-  //         name: "Home",
-  //         component: () => import("@/views/home/index.vue"),
-  //         meta: {
-  //           title: "首页"
-  //         }
-  //       }
-  //     ]
-  //   }
-  // ],
+  history: getHistoryMode(import.meta.env.VITE_ROUTER_HISTORY),
+  routes: setRouterRank(constantRoutes),
   strict: true,
   scrollBehavior(_to, from, savedPosition) {
     return new Promise((resolve) => {
@@ -62,8 +44,6 @@ router.beforeEach((to: ToRouteType, _from, next) => {
 
   // 如果已经登录并存在登录信息后不能跳转到路由白名单，而是继续保持在当前页面
   const toCorrectRoute = () => (WHITE_LIST.includes(to.fullPath) ? next(_from.fullPath) : next());
-
-  console.log("from.path:", _from.path, " to.path:", to.path);
 
   if (userInfo) {
     if (_from?.name) {

@@ -18,20 +18,17 @@ const root: string = process.cwd();
 const alias: Record<string, string> = {
   "@": pathResolve("../src"),
   "@build": pathResolve(),
-  "@root": root,
+  "@root": root
 };
 
 /** 构建信息 */
 const __APP_INFO__ = {
   pkg: { name, version, core },
-  lastBuildTime: dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss"),
+  lastBuildTime: dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss")
 };
 
 /** 获取插件 */
-const getVitePlugins = (
-  isBuild: boolean,
-  VITE_COMPRESSION: ViteCompression
-) => {
+const getVitePlugins = (isBuild: boolean, VITE_COMPRESSION: ViteCompression) => {
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     vue(),
     vueJsx(), // jsx、tsx语法支持
@@ -41,7 +38,7 @@ const getVitePlugins = (
      * vite-plugin-router-warn只在开发环境下启用，只处理vue-router文件并且只在服务启动或重启时运行一次，性能消耗可忽略不计
      */
     removeNoMatch(),
-    svgLoader(), // svg组件化支持
+    svgLoader() // svg组件化支持
   ];
 
   if (isBuild) {

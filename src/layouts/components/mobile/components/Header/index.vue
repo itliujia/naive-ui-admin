@@ -32,9 +32,7 @@
   background: #fff;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 1px 4px #00152914;
-  margin: 0 12px;
-  width: calc(100% - 24px);
-  right: 0px;
+  width: 100%;
 
   .naive-pro-global-header {
     position: relative;

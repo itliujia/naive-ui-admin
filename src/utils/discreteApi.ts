@@ -1,5 +1,6 @@
-import { createDiscreteApi } from "naive-ui";
-import { VNodeChild } from "vue";
+import { BdIcon } from "@/components/BdComps";
+import { createDiscreteApi, NIcon } from "naive-ui";
+import { Component, FunctionalComponent, h, SVGAttributes, VNodeChild } from "vue";
 
 const {
   message: messageApi,
@@ -140,4 +141,13 @@ export const closeAllNotification = () => notificationApi.destroyAll();
 // /** 关闭所有 `Modal` 消息提示 */
 // export const closeAllModal = () => modalApi.destroyAll();
 
-export { messageApi, notificationApi, loadingBar };
+/** 渲染图标 */
+const renderIcon = (icon: Component) => {
+  return () => {
+    return h(NIcon, null, {
+      default: () => h(icon)
+    });
+  };
+};
+
+export { messageApi, notificationApi, loadingBar, renderIcon };

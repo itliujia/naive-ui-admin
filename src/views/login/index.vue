@@ -7,9 +7,12 @@ import { useCompRef } from "@/hooks/typings";
 import { debounce } from "@pureadmin/utils";
 import { useUserStoreHook } from "@/stores/modules/user";
 import { useRouter } from "vue-router";
-import { showMessage } from "@/utils/discreteApi";
+import { showNotification } from "@/utils/discreteApi";
 import { initRouter } from "@/router/utils";
 import siteConfig from "@build/settings/site";
+import useLocalSvg from "@/utils/svg";
+
+const { userSvg, passwdSvg } = useLocalSvg();
 
 /** 当前年份 */
 const currentYear = timestampToTime(-1, "yyyy");
@@ -55,8 +58,11 @@ const onUserLogin = async () => {
           if (res.code == siteConfig.SUCCESS_CODE) {
             initRouter().then(() => {
               router.push("/");
-              showMessage(`${res.data.nickName}，恭喜你登录成功！`, {
-                type: "success"
+              showNotification({
+                title: "登录成功",
+                content: `${res.data.nickName}，恭喜你登录成功！`,
+                type: "success",
+                duration: 2000
               });
             });
           }
@@ -87,56 +93,69 @@ const handleLogin = debounce(onUserLogin, 500);
           <Logo />
         </div>
 
-        <BdMotion :delay="100">
-          <div class="account-top">
-            <div class="user-account">账号登录</div>
-          </div>
-        </BdMotion>
-
-        <!-- 登录表单 -->
-        <NForm ref="loginFormRef" :model="loginForm" :rules="formRules" @keyup.enter="handleLogin">
-          <!-- 账号 -->
-          <BdMotion :delay="150">
-            <NFormItem path="username">
-              <NInput
-                size="large"
-                placeholder="账号"
-                class="rounded-lg"
-                v-model:value="loginForm.username"
-              >
-              </NInput>
-            </NFormItem>
+        <div class="login-form">
+          <BdMotion :delay="100">
+            <div class="account-top">
+              <div class="user-account">账号登录</div>
+            </div>
           </BdMotion>
 
-          <!-- 密码 -->
-          <BdMotion :delay="200">
-            <NFormItem path="password">
-              <NInput
-                size="large"
-                placeholder="密码"
-                type="password"
-                show-password-on="click"
-                class="rounded-lg"
-                v-model:value="loginForm.password"
-              >
-              </NInput>
-            </NFormItem>
-          </BdMotion>
-        </NForm>
-
-        <!-- 登录按钮 -->
-        <BdMotion :delay="250">
-          <NButton
-            round
-            type="primary"
-            class="rounded-lg login-btn"
-            size="large"
-            @click="handleLogin"
-            :loading="isLoading"
+          <!-- 登录表单 -->
+          <NForm
+            ref="loginFormRef"
+            :model="loginForm"
+            :rules="formRules"
+            @keyup.enter="handleLogin"
           >
-            {{ loginBtnLabel }}
-          </NButton>
-        </BdMotion>
+            <!-- 账号 -->
+            <BdMotion :delay="150">
+              <NFormItem path="username">
+                <NInput
+                  size="large"
+                  placeholder="账号"
+                  class="rounded-lg"
+                  v-model:value="loginForm.username"
+                >
+                  <template #prefix>
+                    <BdIcon :icon="userSvg" class="input-icon" />
+                  </template>
+                </NInput>
+              </NFormItem>
+            </BdMotion>
+
+            <!-- 密码 -->
+            <BdMotion :delay="200">
+              <NFormItem path="password">
+                <NInput
+                  size="large"
+                  placeholder="密码"
+                  type="password"
+                  show-password-on="click"
+                  class="rounded-lg"
+                  v-model:value="loginForm.password"
+                >
+                  <template #prefix>
+                    <BdIcon :icon="passwdSvg" class="input-icon" />
+                  </template>
+                </NInput>
+              </NFormItem>
+            </BdMotion>
+          </NForm>
+
+          <!-- 登录按钮 -->
+          <BdMotion :delay="250">
+            <NButton
+              round
+              type="primary"
+              class="rounded-lg login-btn"
+              size="large"
+              @click="handleLogin"
+              :loading="isLoading"
+            >
+              {{ loginBtnLabel }}
+            </NButton>
+          </BdMotion>
+        </div>
 
         <!-- 版权说明 -->
         <BdMotion :delay="300">
